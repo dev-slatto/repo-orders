@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dev-slatto/repo-orders/issues"
   },
-  "homepage": "https://github.com/dev-slatto/repo-orders#readme"
+  "homepage": "https://github.com/dev-slatto/repo-orders#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
