@@ -10,7 +10,7 @@ pipeline {
         stage('Read JSON file') {
             steps {
                 script{ 
-                    def datas = readJSON file: "order.json";
+                    def datas = readFile file: "order.json";
                 }
                  echo datas.toString()
             }
