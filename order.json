@@ -1,0 +1,7 @@
+{
+    "developer":"Your username",
+    "manufacture":"The name of the manufacture in lowecase",
+    "product":"The name of the product in lowercase",
+    "description":"Description of the module (Optional - Blank if empty)"
+
+}
