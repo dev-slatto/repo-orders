@@ -2,6 +2,7 @@
     "developer":"Your username",
     "manufacture":"The name of the manufacture in lowecase",
     "product":"The name of the product in lowercase",
-    "description":"Description of the module (Optional - Blank if empty)"
-
+    "description":"Description of the module (Optional - Blank if empty)",
+    "documentation":"Link to development-documentation",
+    "documentation_comment":"Comment to the documentation (Optional - Blank if empty)"
 }
