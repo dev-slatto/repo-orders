@@ -1,8 +1,8 @@
 {
-    "developer":"Your username",
-    "manufacture":"The name of the manufacture in lowecase",
-    "product":"The name of the product in lowercase",
-    "description":"Description of the module (Optional - Blank if empty)",
-    "documentation":"Link to development-documentation",
-    "documentation_comment":"Comment to the documentation (Optional - Blank if empty)"
+    "developer":"dev-slatto",
+    "manufacture":"adobe",
+    "product":"photoshop",
+    "description":"A module for connection to Adobe Photoshop",
+    "documentation":"https://www.adobe.com",
+    "documentation_comment":"Adobes homepage"
 }
