@@ -9,7 +9,9 @@ pipeline {
         }
         stage('Read JSON file') {
             steps {
-                fileExists './order.json'
+                fileExists './order.json',
+                def data = readFile './order.json',
+                echo data
             }
         }
         stage('Print params'){
