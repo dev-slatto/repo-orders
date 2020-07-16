@@ -1,10 +1,18 @@
+def ORDER_DEVELOPER
+def ORDER_MANUFACTURE
+def ORDER_PRODUCT
+def ORDER_DESCRIPTION
+def ORDER_DOCUMENTATION
+def ORDER_DOCUMENTATION_COMMENT
+def GIT_CREDENTIALS
+
 pipeline {
     agent any
 
     stages {
         stage('Git Pull') {
             steps {
-                git credentialsId: '36cfe953-999f-4001-8bea-d77a3b4b50bf', url: 'https://github.com/dev-slatto/repo-orders'
+                git credentialsId: GIT_CREDENTIALS, url: 'https://github.com/dev-slatto/repo-orders'
             }
         }
         stage('JSON file exists') {
@@ -12,16 +20,47 @@ pipeline {
                 fileExists './order.json'
             }
         }
-        stage('Read JSON file') {
+        stage("Map JSON file") {
             steps {
-                readFile './order.json'
+                script {
+                    def props = readJSON file: './order.json'
+                    def developer = props.developer
+                    def manufacture = props.manufacture
+                    def product = props.product
+                    def description = props.description
+                    def documentation = props.documentation
+                    def documentation_comment = props.documentation_comment
+                
+                    ORDER_DEVELOPER = developer
+                    ORDER_MANUFACTURE = manufacture
+                    ORDER_PRODUCT = product
+                    ORDER_DESCRIPTION = description
+                    ORDER_DOCUMENTATION = documentation
+                    ORDER_DOCUMENTATION_COMMENT = description
+                }
             }
         }
         stage('Print params'){
             steps {
-                 echo 'Hello'
-                
+                echo ORDER_DEVELOPER
+                echo ORDER_MANUFACTURE
+                echo ORDER_PRODUCT
+                echo ORDER_DESCRIPTION
+                echo ORDER_DOCUMENTATION
+                echo ORDER_DOCUMENTATION_COMMENT
             }
-        } 
+        }
+        stage('Create repo') {
+            steps {
+                withCredentials([usernamePassword
+                                    (credentialsId: GIT_CREDENTIALS, 
+                                     passwordVariable: 'GITHUB_PASSWORD', 
+                                     usernameVariable: 'GITHUB_USERNAME')
+                                ]) 
+                {
+                  sh 'echo $ORDER_DEVELOPER'
+                }
+            }
+        }
     }
 }
