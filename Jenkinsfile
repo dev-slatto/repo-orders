@@ -68,11 +68,11 @@ pipeline {
         always {
             script {
                 if (currentBuild.currentResult == 'FAILURE') {
-                    slackSend color: "danger", message: "${env.JOB_NAME} - Build <${env.BUILD_URL}|${env.BUILD_DISPLAY_NAME}> failed! :cry:"
+                    slackSend color: "danger", message: "*${env.JOB_NAME}* - Build <${env.BUILD_URL}|${env.BUILD_DISPLAY_NAME}> failed! :cry:"
                 } else if (currentBuild.currentResult == 'UNSTABLE') {
-                    slackSend color: "danger", message: "${env.JOB_NAME} - Build <${env.BUILD_URL}|${env.BUILD_DISPLAY_NAME}> unstable! :warning:"
+                    slackSend color: "danger", message: "*${env.JOB_NAME}* - Build <${env.BUILD_URL}|${env.BUILD_DISPLAY_NAME}> unstable! :warning:"
                 } else {
-                    slackSend color: "good", message: "${env.JOB_NAME} - Build <${env.BUILD_URL}|${env.BUILD_DISPLAY_NAME}> succeeded! :tada:"
+                    slackSend color: "good", message: "*${env.JOB_NAME}* - Build <${env.BUILD_URL}|${env.BUILD_DISPLAY_NAME}> succeeded! :tada:"
                 }
             }
         }
